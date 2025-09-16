@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeAvadeo - NextGen Service Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Roboto',sans-serif;background:#0f0f1e;color:#fff;line-height:1.6;overflow-x:hidden;}
+  a{text-decoration:none;color:inherit;}
+  section{padding:80px 10%;}
+  h2{font-size:2.5rem;margin-bottom:20px;text-align:center;background:linear-gradient(90deg,#00ffea,#ff00ff);-webkit-background-clip:text;color:transparent;}
+  p{font-size:1rem;color:#ccc;text-align:center;max-width:800px;margin:0 auto 20px;}
+
+  /* HERO */
+  .hero{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    min-height:100vh; background:#111119; position:relative; overflow:hidden;
+  }
+  .hero::before{
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+    background:url('https://www.transparenttextures.com/patterns/cubes.png');
+    opacity:0.05; animation:floatBG 30s linear infinite;
+  }
+  @keyframes floatBG{0%{background-position:0 0;}100%{background-position:1000px 1000px;}}
+  .hero h1{
+    font-size:3rem;margin-bottom:20px;text-align:center;
+    background:linear-gradient(90deg,#00ffea,#ff00ff);
+    -webkit-background-clip:text;color:transparent;
+    animation:fadeInUp 1s forwards 0.2s;
+  }
+  .hero p{font-size:1.2rem;margin-bottom:40px;color:#aaa;opacity:0;animation:fadeInUp 1s forwards 0.4s;text-align:center;}
+
+  .hero .team{
+    display:flex; flex-wrap:wrap; gap:20px; justify-content:center; perspective:1000px;
+  }
+  .team-member{
+    background:rgba(255,255,255,0.05); backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.1); border-radius:15px;
+    padding:20px; text-align:center; width:200px; transition:0.5s; cursor:pointer;
+    opacity:0; transform:translateY(30px);
+  }
+  .team-member:hover{
+    transform:rotateY(10deg) scale(1.05);
+    border-color:#00ffea; box-shadow:0 0 20px #00ffea;
+  }
+  .team-member img{width:100px;height:100px;border-radius:50%;margin-bottom:15px;object-fit:cover;}
+  .team-member h4{margin-bottom:5px;color:#00ffea;}
+  .team-member p{font-size:0.9rem;color:#ccc;}
+
+  /* SERVICES */
+  .services{background:#111119;}
+  .service-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+  .service-card{
+    background:rgba(255,255,255,0.05); backdrop-filter:blur(10px); border-radius:15px;
+    padding:30px; text-align:center; transition:0.5s; opacity:0; transform:translateY(30px);
+  }
+  .service-card:hover{transform:translateY(-10px) scale(1.05); border:1px solid #00ffea; box-shadow:0 0 20px #00ffea;}
+  .service-card h3{color:#00ffea; margin-bottom:10px;}
+  .service-card p{color:#ccc; font-size:0.9rem;}
+
+  /* PORTFOLIO */
+  .portfolio-filters{display:flex; justify-content:center; flex-wrap:wrap; gap:10px;margin-bottom:30px;}
+  .filter-btn{
+    padding:10px 20px;border:none;border-radius:10px;background:#1f1f2e;color:#fff;cursor:pointer;transition:0.3s;
+  }
+  .filter-btn.active, .filter-btn:hover{background:#00ffea;color:#000;}
+
+  .portfolio-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px;}
+  .portfolio-card{
+    border-radius:15px; overflow:hidden; cursor:pointer; position:relative; opacity:0; transform:translateY(30px);
+    transition:transform 0.5s, box-shadow 0.5s;
+  }
+  .portfolio-card img{width:100%; display:block; height:200px; object-fit:cover; transition:transform 0.5s;}
+  .portfolio-card:hover img{transform:scale(1.1);}
+  .portfolio-card:hover{transform:translateY(-10px) rotateY(5deg); box-shadow:0 0 20px #ff00ff;}
+
+  /* CONTACT */
+  .contact form{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:15px;}
+  .contact input, .contact textarea{padding:15px;border-radius:10px;border:none;background:#1f1f2e;color:#fff;}
+  .contact button{padding:15px;border:none;border-radius:10px;background:#00ffea;color:#000;font-weight:bold;cursor:pointer;transition:0.3s;}
+  .contact button:hover{background:#ff00ff; color:#fff;}
+
+  /* FOOTER */
+  footer{text-align:center;padding:40px 0;color:#777;border-top:1px solid rgba(255,255,255,0.1);}
+
+  @keyframes fadeInUp{0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>CodeAvadeo</h1>
+  <p>We bring your ideas to life. UI/UX, Game Development, VFX, 3D Modelling, Digital Marketing, Photography, Videography, Networking, and Accounting.</p>
+  <div class="team">
+    <div class="team-member" data-member="Alex"><img src="https://i.pravatar.cc/100?img=1"><h4>Alex</h4><p>VFX & 3D Artist</p></div>
+    <div class="team-member" data-member="Sarah"><img src="https://i.pravatar.cc/100?img=2"><h4>Sarah</h4><p>UI/UX Designer</p></div>
+    <div class="team-member" data-member="Ryan"><img src="https://i.pravatar.cc/100?img=3"><h4>Ryan</h4><p>Game Developer</p></div>
+    <div class="team-member" data-member="Mia"><img src="https://i.pravatar.cc/100?img=4"><h4>Mia</h4><p>Network Specialist</p></div>
+    <div class="team-member" data-member="Leo"><img src="https://i.pravatar.cc/100?img=5"><h4>Leo</h4><p>Accountant</p></div>
+    <div class="team-member" data-member="Emma"><img src="https://i.pravatar.cc/100?img=6"><h4>Emma</h4><p>Digital Marketer & Editor</p></div>
+    <div class="team-member" data-member="Jake"><img src="https://i.pravatar.cc/100?img=7"><h4>Jake</h4><p>Graphic Designer</p></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+<h2>Our Services</h2>
+<p>Explore the range of services we offer to make your business futuristic and standout.</p>
+<div class="service-grid">
+  <div class="service-card"><h3>UI/UX Design</h3><p>Creating interactive and intuitive designs for websites and apps.</p></div>
+  <div class="service-card"><h3>Game Development</h3><p>Building immersive and interactive games for all platforms.</p></div>
+  <div class="service-card"><h3>VFX & 3D Modelling</h3><p>Stunning visual effects and realistic 3D models for projects.</p></div>
+  <div class="service-card"><h3>Digital Marketing</h3><p>Boost your brand with innovative online marketing strategies.</p></div>
+  <div class="service-card"><h3>Photo/Video Editing</h3><p>Professional editing to make your media content shine.</p></div>
+  <div class="service-card"><h3>Videography & Photography</h3><p>Capture moments and stories with professional cameras and techniques.</p></div>
+  <div class="service-card"><h3>Networking</h3><p>Secure and reliable network solutions for your business.</p></div>
+  <div class="service-card"><h3>Accounting</h3><p>Efficient accounting and bookkeeping for your financial success.</p></div>
+</div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio">
+<h2>Our Portfolio</h2>
+<p>Click a team member above to filter their projects. Click "All Projects" below to show all.</p>
+<div class="portfolio-filters">
+  <button class="filter-btn active" data-filter="all">All Projects</button>
+</div>
+<div class="portfolio-grid">
+  <!-- Example Projects -->
+  <div class="portfolio-card" data-member="Alex"><img src="https://via.placeholder.com/400x300?text=Alex+Project+1"></div>
+  <div class="portfolio-card" data-member="Alex"><img src="https://via.placeholder.com/400x300?text=Alex+Project+2"></div>
+  <div class="portfolio-card" data-member="Sarah"><img src="https://via.placeholder.com/400x300?text=Sarah+Project+1"></div>
+  <div class="portfolio-card" data-member="Sarah"><img src="https://via.placeholder.com/400x300?text=Sarah+Project+2"></div>
+  <div class="portfolio-card" data-member="Ryan"><img src="https://via.placeholder.com/400x300?text=Ryan+Project+1"></div>
+  <div class="portfolio-card" data-member="Mia"><img src="https://via.placeholder.com/400x300?text=Mia+Project+1"></div>
+  <div class="portfolio-card" data-member="Leo"><img src="https://via.placeholder.com/400x300?text=Leo+Project+1"></div>
+  <div class="portfolio-card" data-member="Emma"><img src="https://via.placeholder.com/400x300?text=Emma+Project+1"></div>
+  <div class="portfolio-card" data-member="Jake"><img src="https://via.placeholder.com/400x300?text=Jake+Project+1"></div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+<h2>Contact Us</h2>
+<p>Get in touch to discuss your next project or collaboration.</p>
+<form>
+  <input type="text" placeholder="Your Name" required>
+  <input type="email" placeholder="Your Email" required>
+  <textarea rows="5" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+</section>
+
+<!-- FOOTER -->
+<footer>&copy; 2025 CodeAvadeo. All Rights Reserved.</footer>
+
+<script>
+const elements = document.querySelectorAll('.team-member, .service-card, .portfolio-card');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.opacity=1;
+      entry.target.style.transform='translateY(0)';
+      entry.target.style.transition='all 0.8s ease-out';
+    }
+  });
+},{threshold:0.1});
+elements.forEach(el=>observer.observe(el));
+
+// Portfolio filtering
+const portfolioCards = document.querySelectorAll('.portfolio-card');
+const filterBtnsContainer = document.querySelector('.portfolio-filters');
+
+// Function to filter portfolio
+function filterPortfolio(member){
+  document.querySelectorAll('.filter-btn').forEach(btn=>btn.classList.remove('active'));
+  if(member==='all'){
+    filterBtnsContainer.querySelector('[data-filter="all"]').classList.add('active');
+  }
+  portfolioCards.forEach(card=>{
+    if(member==='all' || card.dataset.member === member){
+      card.style.display='block';
+      setTimeout(()=>{card.style.opacity=1; card.style.transform='translateY(0)';},50);
+    }else{
+      card.style.opacity=0;
+      card.style.transform='translateY(30px)';
+      setTimeout(()=>{card.style.display='none';},300);
+    }
+  });
+}
+
+// Hero click filters
+document.querySelectorAll('.team-member').forEach(member=>{
+  member.addEventListener('click', ()=>{
+    filterPortfolio(member.dataset.member);
+  });
+});
+
+// "All Projects" button
+document.querySelector('[data-filter="all"]').addEventListener('click', ()=>{filterPortfolio('all');});
+</script>
+
+</body>
+</html>
